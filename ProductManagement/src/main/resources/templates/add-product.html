@@ -3,16 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var price = document.getElementById("price").value.trim();
+            
+            
+            if (name === "") {
+                alert("Name field cannot be empty");
+                return false; 
+            }
+            
+            
+            if (price === "" || isNaN(price)) {
+                alert("Price must be a valid number");
+                return false; 
+            }
+            
+            
+            return true;
+        }
+    </script>
 </head>
 <body>
     <h2>Add Product</h2>
-    <form action="/add" method="post">
+    <form action="/add" method="post" onsubmit="return validateForm()">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br>
         
         <label for="price">Price:</label><br>
         <input type="text" id="price" name="price"><br>
-        
         
         <input type="submit" value="Submit">
     </form>
